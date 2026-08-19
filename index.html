@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>極簡 PWA App</title>
+  <link rel="manifest" href="manifest.json">
+  <!-- 網頁版直接引入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-900 flex items-center justify-center min-h-screen">
+
+  <div class="text-center p-8 bg-white shadow-xl rounded-2xl max-w-sm w-full">
+    <h1 class="text-2xl font-bold mb-4">Hello PWA 👋</h1>
+    <p class="text-gray-500">極簡模板已準備就緒</p>
+  </div>
+
+  <script>
+    // 註冊 Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('SW 註冊成功!', reg))
+          .catch(err => console.log('SW 註冊失敗', err));
+      });
+    }
+  </script>
+</body>
+</html>
