@@ -149,9 +149,9 @@
     max-width:34em;
     margin:32px auto 0;
     padding:26px 24px;
-    border:1px dashed rgba(217,181,138,.45);
+    border:1px dashed var(--glass-border);
     border-radius:16px;
-    background:rgba(23,21,20,.55);
+    background:var(--glass-bg);
     animation:rise .7s .22s ease-out both;
   }
   .cta-line{
@@ -159,18 +159,19 @@
     font-size:14.5px;
     line-height:1.9;
     letter-spacing:.02em;
-    color:#d9b58a;
+    color:var(--ink-soft);
   }
   .cta-line + .cta-line{margin-top:14px;}
   .cta-link{
-    color:#d9b58a;
+    color:var(--ink);
     text-decoration:underline;
     text-underline-offset:3px;
   }
   .cta-note{
     margin-top:22px;
     padding-top:16px;
-    border-top:1px dashed rgba(217,181,138,.3);
+    border-top:1px dashed var(--glass-border);
+    color:var(--ink-dim);
   }
 
   .tabbar{
