@@ -72,6 +72,7 @@
     letter-spacing:.32em;
     text-transform:uppercase;
     color:var(--ink-dim);
+    animation:rise .7s ease-out both;
   }
   .page-title{
     margin-top:14px;
@@ -80,6 +81,7 @@
     font-size:clamp(26px,7vw,32px);
     line-height:1.5;
     letter-spacing:.04em;
+    animation:rise .7s .06s ease-out both;
   }
   .page-subtitle{
     margin-top:10px;
@@ -90,6 +92,11 @@
     font-size:13.5px;
     line-height:1.8;
     color:var(--ink-dim);
+    animation:rise .7s .12s ease-out both;
+  }
+  @keyframes rise{
+    from{opacity:.01;transform:translateY(14px);}
+    to{opacity:1;transform:none;}
   }
 
   /* 常見問題手風琴：與貝果站的原生 <details> 不同，
@@ -260,7 +267,8 @@
   .tab.active .tab-icon svg{stroke:#17152a;}
 
   @media (prefers-reduced-motion: reduce){
-    *{transition:none !important;}
+    *{animation:none !important;transition:none !important;}
+    .eyebrow,.page-title,.page-subtitle{opacity:1 !important;transform:none !important;}
     .tab:active{transform:none;opacity:.55;}
     .tab:active .tab-icon{transform:none;}
     .faq-a-wrap{transition:none;}
