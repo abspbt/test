@@ -26,12 +26,24 @@
     --safe-t:env(safe-area-inset-top, 0px);
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-  html,body{height:100%;}
+  html,body{min-height:100%;}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     color:var(--ink);
+    /* 頂部沿用首頁的日出色階，僅維持固定像素高度（不隨頁面長度縮放），
+       之後收斂為與首頁底色一致的深藍，兩個尾端色標相同，長文捲動時
+       不會再重複貼一次漸層 */
     background:
-      linear-gradient(180deg, #423f5e 0%, #241f3a 26%, #17152a 46%, #17152a 100%);
+      radial-gradient(480px 380px at 74% 70px, rgba(255,170,120,.4), transparent 62%),
+      linear-gradient(180deg,
+        #8f8d9c 0px,
+        #b79c9a 34px,
+        #eaab84 84px,
+        #ee8e63 130px,
+        #7a7796 210px,
+        #423f5e 290px,
+        #17152a 380px,
+        #17152a 100%);
     overflow-x:hidden;
   }
 
@@ -49,15 +61,6 @@
     font-weight:300;
     letter-spacing:.02em;
   }
-  .menu-btn{
-    width:40px;height:40px;
-    display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--glass-border);
-    border-radius:999px;
-    background:var(--glass-bg);
-  }
-  .menu-btn svg{width:18px;height:18px;}
-
   main{
     position:relative;
     z-index:2;
@@ -120,7 +123,7 @@
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
     border:1px solid var(--glass-border);
-    border-radius:28px;
+    border-radius:16px;
   }
   .tab{
     flex:1;
@@ -173,9 +176,6 @@
 
 <header>
   <span class="brand">歪嘴雞烘焙</span>
-  <button class="menu-btn" aria-label="選單">
-    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-  </button>
 </header>
 
 <main>
@@ -214,6 +214,10 @@
   <button class="tab">
     <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.5 6a3 3 0 01-3 2.5H8.5a3 3 0 01-3-2.5L4 11z"/><path d="M9 8c0-1 .8-1.2.8-2.2S9 4 9 4M13 8c0-1 .8-1.2.8-2.2S13 4 13 4"/></svg></span>
     <span class="tab-label">溫沙拉</span>
+  </button>
+  <button class="tab">
+    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.85-.8c.4.95.15 1.75-.7 2.45-.8.65-1.15 1.1-1.15 2.15"/><circle cx="12" cy="16.8" r=".6" fill="currentColor" stroke="none"/></svg></span>
+    <span class="tab-label">常見問題</span>
   </button>
 </nav>
 
