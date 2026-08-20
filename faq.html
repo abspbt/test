@@ -198,20 +198,23 @@
     padding-bottom:2px;
   }
   .faq-a-link svg{width:14px;height:14px;flex:none;}
+  /* LINE 按鈕規範同 about.html store-info-line：不仿製 LINE 商標圖示，
+     僅用純文字連結，背景沿用官方識別色 #06C755 */
   .faq-line-cta{
     margin-top:14px;
     display:inline-flex;
     align-items:center;
-    gap:8px;
-    padding:9px 16px;
+    justify-content:center;
+    padding:13px 22px;
     border-radius:999px;
-    background:#fff;
-    color:#17152a;
+    background:#06C755;
+    color:#fff;
     text-decoration:none;
-    font-size:13px;
-    font-weight:500;
+    font-size:14px;
+    font-weight:600;
+    transition:transform .15s cubic-bezier(.4,0,.2,1), opacity .15s ease;
   }
-  .faq-line-cta svg{width:15px;height:15px;flex:none;}
+  .faq-line-cta:active{transform:scale(.97);opacity:.85;}
 
   .tabbar{
     position:fixed;
@@ -517,10 +520,7 @@
               <li><strong>企業大量團購</strong>：享有專屬團購優惠與排程出貨，請洽詢官方 LINE 專人窗口辦理。</li>
               <li><strong>客製禮盒與活動點心</strong>：彌月禮盒、展會茶會或特殊活動需求，均可與專人一對一討論口味搭配與專屬包裝。</li>
             </ul>
-            <a class="faq-line-cta" href="https://line.me/R/ti/p/@292xswnp" target="_blank" rel="noopener noreferrer" aria-label="加入LINE官方帳號（於新分頁開啟）">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3.6c-5.35 0-9.7 3.55-9.7 7.92 0 3.92 3.45 7.2 8.11 7.84.32.07.75.21.86.49.1.25.06.65.03.9l-.14.86c-.04.24-.19.96.84.53s5.63-3.31 7.68-5.67c1.41-1.6 2.08-3.22 2.08-5.05 0-4.37-4.35-7.92-9.76-7.92Z"/></svg>
-              加入LINE官方帳號
-            </a>
+            <a class="faq-line-cta" href="https://line.me/R/ti/p/@292xswnp" target="_blank" rel="noopener noreferrer" aria-label="加入LINE官方帳號（於新分頁開啟）">加入LINE官方帳號</a>
           </div>
         </div>
       </div>
