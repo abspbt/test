@@ -104,12 +104,13 @@
     margin:36px auto 0;
     animation:rise .7s .18s ease-out both;
   }
+  .story::after{content:"";display:table;clear:both;}
   .story-photo{
-    display:block;
-    width:68%;
+    float:left;
+    width:42%;
     aspect-ratio:4/3;
-    margin:0 auto 28px;
-    border-radius:18px;
+    margin:2px 16px 12px 0;
+    border-radius:14px;
     border:1px solid var(--glass-border);
     object-fit:cover;
   }
@@ -128,6 +129,7 @@
     letter-spacing:.03em;
   }
   .story blockquote{
+    clear:both;
     margin:2.2em 0;
     padding:1.4em 0;
     border-top:1px solid var(--glass-border);
