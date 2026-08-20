@@ -1,5 +1,5 @@
-const CACHE_NAME = 'pwa-cache-v5';
-const urlsToCache = ['/', '/index.html', '/about.html', '/faq.html', '/cake.html', '/manifest.json'];
+const CACHE_NAME = 'pwa-cache-v6';
+const urlsToCache = ['/', '/index.html', '/about.html', '/faq.html', '/cake.html', '/bagel.html', '/salad.html', '/manifest.json'];
 
 // 安裝並強制等待接管
 self.addEventListener('install', event => {
