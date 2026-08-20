@@ -4,9 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17152a">
-<title>晨光烘焙</title>
+<title>歪嘴雞烘焙</title>
 <link rel="manifest" href="/manifest.json">
 <style>
+  @font-face{
+    font-family:"Brand LXGW WenKai TC Light";
+    font-weight:300;
+    font-style:normal;
+    font-display:swap;
+    /* 已子集化「歪嘴雞烘焙」5 字，自架內嵌，避免額外請求 */
+    src:url(data:font/woff2;base64,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) format("woff2");
+    unicode-range:U+5634,U+6B6A,U+70D8,U+7119,U+96DE;
+  }
   :root{
     --ink:#fff;
     --ink-dim:rgba(255,255,255,.78);
@@ -58,7 +67,12 @@
     justify-content:space-between;
     padding:calc(16px + var(--safe-t)) 20px 16px;
   }
-  .brand{font-size:15px;font-weight:600;letter-spacing:.02em;}
+  .brand{
+    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+    font-size:15px;
+    font-weight:300;
+    letter-spacing:.02em;
+  }
   .menu-btn{
     width:40px;height:40px;
     display:flex;align-items:center;justify-content:center;
@@ -88,8 +102,8 @@
     animation:rise .7s ease-out both;
   }
   .title{
-    font-family:"Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
-    font-weight:200;
+    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+    font-weight:300;
     font-size:clamp(40px,11vw,56px);
     line-height:1.2;
     letter-spacing:.06em;
@@ -192,7 +206,7 @@
 
 <div class="hero">
   <header>
-    <span class="brand">晨光烘焙</span>
+    <span class="brand">歪嘴雞烘焙</span>
     <button class="menu-btn" aria-label="選單">
       <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
     </button>
@@ -200,7 +214,7 @@
 
   <div class="hero-copy">
     <p class="eyebrow">手工烘焙・每日現做</p>
-    <h1 class="title">晨光烘焙</h1>
+    <h1 class="title">歪嘴雞烘焙</h1>
     <p class="desc">以溫度與時間慢慢等待，每一份貝果、蛋糕與沙拉，都是清晨手作的心意。</p>
     <button class="cta">查看菜單</button>
   </div>
