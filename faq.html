@@ -108,6 +108,7 @@
     display:flex;
     flex-direction:column;
     gap:10px;
+    animation:rise .7s .18s ease-out both;
   }
   .faq-item{
     border-radius:16px;
@@ -268,7 +269,7 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
-    .eyebrow,.page-title,.page-subtitle{opacity:1 !important;transform:none !important;}
+    .eyebrow,.page-title,.page-subtitle,.faq-list{opacity:1 !important;transform:none !important;}
     .tab:active{transform:none;opacity:.55;}
     .tab:active .tab-icon{transform:none;}
     .faq-a-wrap{transition:none;}

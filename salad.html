@@ -102,6 +102,7 @@
   .story{
     max-width:34em;
     margin:36px auto 0;
+    animation:rise .7s .18s ease-out both;
   }
   .story p{
     font-weight:300;
@@ -188,7 +189,7 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
-    .eyebrow,.page-title,.page-subtitle{opacity:1 !important;transform:none !important;}
+    .eyebrow,.page-title,.page-subtitle,.story{opacity:1 !important;transform:none !important;}
     .tab:active{transform:none;opacity:.55;}
     .tab:active .tab-icon{transform:none;}
   }
