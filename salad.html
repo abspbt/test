@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17152a">
-<title>歪嘴雞烘焙</title>
+<title>溫沙拉・歪嘴雞烘焙</title>
 <link rel="manifest" href="/manifest.json">
 <style>
   @font-face{
@@ -19,44 +19,32 @@
   :root{
     --ink:#fff;
     --ink-dim:rgba(255,255,255,.78);
+    --ink-soft:rgba(255,255,255,.88);
     --glass-bg:rgba(16,15,26,.82);
     --glass-border:rgba(255,255,255,.1);
     --safe-b:env(safe-area-inset-bottom, 0px);
     --safe-t:env(safe-area-inset-top, 0px);
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-  html,body{height:100%;background:#17152a;}
+  html,body{min-height:100%;background:#17152a;}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     color:var(--ink);
-    background:#17152a;
-    overflow-x:hidden;
-  }
-
-  .hero{
-    position:relative;
-    min-height:100dvh;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
+    /* 頂部沿用首頁的日出色階，僅維持固定像素高度（不隨頁面長度縮放），
+       之後收斂為與首頁底色一致的深藍，兩個尾端色標相同，長文捲動時
+       不會再重複貼一次漸層 */
     background:
-      radial-gradient(110% 55% at 74% 22%, rgba(255,170,120,.4), transparent 62%),
+      radial-gradient(480px 380px at 74% 70px, rgba(255,170,120,.4), transparent 62%),
       linear-gradient(180deg,
-        #8f8d9c 0%,
-        #b79c9a 16%,
-        #eaab84 34%,
-        #ee8e63 47%,
-        #7a7796 63%,
-        #423f5e 78%,
-        #201d34 92%,
+        #8f8d9c 0px,
+        #b79c9a 34px,
+        #eaab84 84px,
+        #ee8e63 130px,
+        #7a7796 210px,
+        #423f5e 290px,
+        #17152a 380px,
         #17152a 100%);
-  }
-  .hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
-    pointer-events:none;
+    overflow-x:hidden;
   }
 
   header{
@@ -73,43 +61,68 @@
     font-weight:300;
     letter-spacing:.02em;
   }
-  .hero-copy{
+  main{
     position:relative;
     z-index:2;
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    padding:8px 28px calc(140px + var(--safe-b));
+  }
+  .page-head{
+    padding:28px 0 8px;
     text-align:center;
-    padding:24px 28px;
-    gap:14px;
   }
   .eyebrow{
     font-size:11px;
     letter-spacing:.32em;
     text-transform:uppercase;
     color:var(--ink-dim);
-    animation:rise .7s ease-out both;
   }
-  .title{
-    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+  .page-title{
+    margin-top:14px;
+    font-family:"Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
     font-weight:300;
-    font-size:clamp(40px,11vw,56px);
-    line-height:1.2;
-    letter-spacing:.06em;
-    animation:rise .7s .06s ease-out both;
+    font-size:clamp(26px,7vw,32px);
+    line-height:1.5;
+    letter-spacing:.04em;
   }
-  .desc{
-    max-width:30ch;
-    font-size:14px;
-    line-height:1.7;
+  .page-subtitle{
+    margin-top:10px;
+    font-weight:300;
+    font-size:13.5px;
+    line-height:1.8;
     color:var(--ink-dim);
-    animation:rise .7s .12s ease-out both;
   }
-  @keyframes rise{
-    from{opacity:.01;transform:translateY(14px);}
-    to{opacity:1;transform:none;}
+
+  .story{
+    max-width:34em;
+    margin:36px auto 0;
+  }
+  .story p{
+    font-weight:300;
+    font-size:15px;
+    line-height:2;
+    letter-spacing:.02em;
+    color:var(--ink-soft);
+    text-indent:2em;
+  }
+  .story p + p{margin-top:1.5em;}
+  .story p.lead{
+    font-size:16px;
+    color:var(--ink);
+    letter-spacing:.03em;
+  }
+  .story blockquote{
+    margin:2.2em 0;
+    padding:1.4em 0;
+    border-top:1px solid var(--glass-border);
+    border-bottom:1px solid var(--glass-border);
+    text-align:center;
+    text-indent:0;
+    font-family:"Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+    font-weight:300;
+    font-size:17px;
+    line-height:1.9;
+    letter-spacing:.05em;
+    color:var(--ink);
   }
 
   .tabbar{
@@ -167,8 +180,7 @@
   .tab.active .tab-icon svg{stroke:#17152a;}
 
   @media (prefers-reduced-motion: reduce){
-    *{animation:none !important;transition:none !important;}
-    .eyebrow,.title,.desc{opacity:1 !important;transform:none !important;}
+    *{transition:none !important;}
     .tab:active{transform:none;opacity:.55;}
     .tab:active .tab-icon{transform:none;}
   }
@@ -176,21 +188,28 @@
 </head>
 <body>
 
-<div class="hero">
-  <header>
-    <span class="brand">歪嘴雞烘焙</span>
-  </header>
+<header>
+  <span class="brand">歪嘴雞烘焙</span>
+</header>
 
-  <div class="hero-copy">
-    <p class="eyebrow">手工烘焙・每日現做</p>
-    <h1 class="title">歪嘴雞烘焙</h1>
-    <p class="desc">以溫度與時間慢慢等待，每一份貝果、蛋糕與沙拉，都是清晨手作的心意。</p>
+<main>
+  <div class="page-head">
+    <p class="eyebrow">溫沙拉</p>
+    <h1 class="page-title">凝鍊大地的溫潤咬合：在微溫時蔬裡，找回身體的安頓節奏</h1>
+    <p class="page-subtitle">拋開生冷葉菜的單薄寡味，以恰到好處的火候喚醒植物本真甘甜，讓每一口咀嚼都成為身心的溫柔靠岸。</p>
   </div>
 
-</div>
+  <article class="story">
+    <p class="lead">剛離火的微溫蒸騰著淡雅蒜香，與現磨黑胡椒辛冽奔放的碎粒在空氣中交織升騰——這不是一碗冰冷疏離的生菜拼盤，而是一場對「生硬寡淡」的溫柔反叛。微熱的碗沿貼合著掌心，以最舒服的溫度，向疲憊的感官遞上一張溫暖的請帖。</p>
+    <p>在齒間輕巧斷開的翠綠櫛瓜與金黃玉米筍，率先迸發出清冽豐沛的水分；隨之而來的是貝貝南瓜如熟成栗子般細密、綿潤的深沉甜感。軟彈通心粉與帶著大地粉質香氣的鷹嘴豆，在唇齒間構築出極具層次的咬合律動；而厚實的杏鮑菇飽含微火炙出的蕈汁，疊合著毛豆仁純粹清朗的豆韻，在少許海鹽的輕巧提引下，層層綻開植物原生的深邃質地。</p>
+    <p>捨棄了濃重人工醬汁的遮掩，僅憑極簡火候與純淨辛香烘托，賦予日常蔬食宛如精緻主菜般的飽滿骨架。它既能撫平運動後亟需能量的空匱，也是步調匆忙時最舒心的一抹慰藉。</p>
+    <blockquote>真正的克制並非寡淡，而是用恰到好處的溫度，成全每種食材獨一無二的生命質地。</blockquote>
+    <p>當微溫與甘甜在喉間緩緩沉降，留下的正是大地最靜謐深長的滋養。在歪嘴雞烘焙的餐桌上，一碗溫沙拉不只是填補飢餓，更是用最質樸的風土之味，為匆碌的生活重新找回踏實而柔軟的呼吸。</p>
+  </article>
+</main>
 
 <nav class="tabbar">
-  <a class="tab active" href="index.html">
+  <a class="tab" href="index.html">
     <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>
     <span class="tab-label">首頁</span>
   </a>
@@ -206,7 +225,7 @@
     <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.8.9.8 1.7 0 2.6-.8-.9-.8-1.7 0-2.6Z"/><path d="M12 5.6v3.6"/><rect x="4.5" y="10.4" width="15" height="9.2" rx="4.5"/><path d="M6.3 15c1-1.1 2-1.1 3 0s2 1.1 3 0 2-1.1 3-1.1 1.6.5 2.4 1.1"/></svg></span>
     <span class="tab-label">蛋糕</span>
   </button>
-  <a class="tab" href="salad.html">
+  <a class="tab active" href="salad.html">
     <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.5 6a3 3 0 01-3 2.5H8.5a3 3 0 01-3-2.5L4 11z"/><path d="M12 11c-.3-1.8-1.6-2.2-1.6-3.8"/><path d="M12 11c.2-1.3 1.2-1.6 1.7-2.8"/></svg></span>
     <span class="tab-label">溫沙拉</span>
   </a>
