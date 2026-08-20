@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#17152a">
-<title>歪嘴雞烘焙</title>
+<title>關於我們・歪嘴雞烘焙</title>
 <link rel="manifest" href="/manifest.json">
 <style>
   @font-face{
@@ -19,6 +19,7 @@
   :root{
     --ink:#fff;
     --ink-dim:rgba(255,255,255,.78);
+    --ink-soft:rgba(255,255,255,.88);
     --glass-bg:rgba(16,15,26,.82);
     --glass-border:rgba(255,255,255,.1);
     --safe-b:env(safe-area-inset-bottom, 0px);
@@ -29,34 +30,9 @@
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     color:var(--ink);
-    background:#17152a;
-    overflow-x:hidden;
-  }
-
-  .hero{
-    position:relative;
-    min-height:100dvh;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
     background:
-      radial-gradient(110% 55% at 74% 22%, rgba(255,170,120,.4), transparent 62%),
-      linear-gradient(180deg,
-        #8f8d9c 0%,
-        #b79c9a 16%,
-        #eaab84 34%,
-        #ee8e63 47%,
-        #7a7796 63%,
-        #423f5e 78%,
-        #201d34 92%,
-        #17152a 100%);
-  }
-  .hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
-    pointer-events:none;
+      linear-gradient(180deg, #423f5e 0%, #241f3a 26%, #17152a 46%, #17152a 100%);
+    overflow-x:hidden;
   }
 
   header{
@@ -82,75 +58,54 @@
   }
   .menu-btn svg{width:18px;height:18px;}
 
-  .hero-copy{
+  main{
     position:relative;
     z-index:2;
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    padding:8px 28px calc(140px + var(--safe-b));
+  }
+  .page-head{
+    padding:28px 0 8px;
     text-align:center;
-    padding:24px 28px;
-    gap:14px;
   }
   .eyebrow{
     font-size:11px;
     letter-spacing:.32em;
     text-transform:uppercase;
     color:var(--ink-dim);
-    animation:rise .7s ease-out both;
   }
-  .title{
-    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+  .page-title{
+    margin-top:14px;
+    font-family:"Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
     font-weight:300;
-    font-size:clamp(40px,11vw,56px);
-    line-height:1.2;
-    letter-spacing:.06em;
-    animation:rise .7s .06s ease-out both;
+    font-size:clamp(26px,7vw,32px);
+    line-height:1.5;
+    letter-spacing:.04em;
   }
-  .desc{
-    max-width:30ch;
-    font-size:14px;
-    line-height:1.7;
+  .page-subtitle{
+    margin-top:10px;
+    font-weight:300;
+    font-size:13.5px;
+    line-height:1.8;
     color:var(--ink-dim);
-    animation:rise .7s .12s ease-out both;
   }
-  .cta{
-    margin-top:6px;
-    padding:14px 30px;
-    font-size:12px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
+
+  .story{
+    max-width:34em;
+    margin:36px auto 0;
+  }
+  .story p{
+    font-weight:300;
+    font-size:15px;
+    line-height:2;
+    letter-spacing:.02em;
+    color:var(--ink-soft);
+    text-indent:2em;
+  }
+  .story p + p{margin-top:1.5em;}
+  .story p.lead{
+    font-size:16px;
     color:var(--ink);
-    background:transparent;
-    border:1px solid rgba(255,255,255,.7);
-    border-radius:999px;
-    min-height:44px;
-    animation:rise .7s .18s ease-out both;
-  }
-  .cta:active{background:rgba(255,255,255,.14);}
-
-  .scroll-cue{
-    position:relative;
-    z-index:2;
-    display:flex;
-    justify-content:center;
-    padding:6px 0 18px;
-  }
-  .scroll-cue svg{
-    width:20px;height:28px;
-    opacity:.85;
-    animation:bob 1.8s ease-in-out infinite;
-  }
-
-  @keyframes rise{
-    from{opacity:.01;transform:translateY(14px);}
-    to{opacity:1;transform:none;}
-  }
-  @keyframes bob{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(8px);}
+    letter-spacing:.03em;
   }
 
   .tabbar{
@@ -208,9 +163,7 @@
   .tab.active .tab-icon svg{stroke:#17152a;}
 
   @media (prefers-reduced-motion: reduce){
-    *{animation:none !important;transition:none !important;}
-    .eyebrow,.title,.desc,.cta{opacity:1 !important;transform:none !important;}
-    .scroll-cue svg{opacity:.85 !important;}
+    *{transition:none !important;}
     .tab:active{transform:none;opacity:.55;}
     .tab:active .tab-icon{transform:none;}
   }
@@ -218,32 +171,35 @@
 </head>
 <body>
 
-<div class="hero">
-  <header>
-    <span class="brand">歪嘴雞烘焙</span>
-    <button class="menu-btn" aria-label="選單">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-    </button>
-  </header>
+<header>
+  <span class="brand">歪嘴雞烘焙</span>
+  <button class="menu-btn" aria-label="選單">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+  </button>
+</header>
 
-  <div class="hero-copy">
-    <p class="eyebrow">手工烘焙・每日現做</p>
-    <h1 class="title">歪嘴雞烘焙</h1>
-    <p class="desc">以溫度與時間慢慢等待，每一份貝果、蛋糕與沙拉，都是清晨手作的心意。</p>
-    <button class="cta">查看菜單</button>
+<main>
+  <div class="page-head">
+    <p class="eyebrow">品牌故事</p>
+    <h1 class="page-title">以家為原點的烘焙手記</h1>
+    <p class="page-subtitle">從一份純粹的甜意，到一顆盛滿守護的日常貝果</p>
   </div>
 
-  <div class="scroll-cue" aria-hidden="true">
-    <svg viewBox="0 0 20 28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="0" x2="10" y2="22"/><polyline points="3,15 10,22 17,15"/></svg>
-  </div>
-</div>
+  <article class="story">
+    <p class="lead">麵粉在指尖散落的微涼觸感，是這趟烘焙旅程最初的起點。</p>
+    <p>最初，一切僅源於對甜點的純粹熱愛。在烤箱升溫的橘黃微光中，看著優質奶油與麵粉在熱力下交融出細緻的香氣，是生活中最療癒的時刻。為了讓身邊的家人與摯友嚐到安心無虞的味道，主廚開始尋訪純淨乳源、自然熟成的食材與無添加麵粉。那時的烘焙，是一份份只想與所愛之人分享的純粹心意。</p>
+    <p>走入婚姻、迎來孩子的誕生，這份對食材的堅持有了更深厚、柔軟的重量。看著孩子成長，餐桌上的考量從偶爾的甜蜜犒賞，轉化為每日入口的踏實營養。為了給孩子一份沒有負擔、健康且飽足的早晨滋養，主廚將專注力傾注於質樸而富含生命力的「手作貝果」。</p>
+    <p>貝果的誕生，是一場時間與溫度的沉靜對話。捨棄繁複的多餘添加，嚴選純粹穀物進行長時間低溫發酵，透過熱水汆燙凝結出薄脆緊緻的外皮，再烘烤出富有彈性、越嚼越能嚐出天然麥甜的扎實組織。</p>
+    <p>從為朋友烘烤一盤點心，到為孩子揉捏一顆貝果——這裡出爐的每一份麵包，都是這份「為家人備餐」心意的延伸。願這份微溫而純淨的手作溫度，也能成為你與家人日常餐桌上最安心的陪伴。</p>
+  </article>
+</main>
 
 <nav class="tabbar">
-  <a class="tab active" href="index.html">
+  <a class="tab" href="index.html">
     <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>
     <span class="tab-label">首頁</span>
   </a>
-  <a class="tab" href="about.html">
+  <a class="tab active" href="about.html">
     <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="currentColor" stroke="none"/></svg></span>
     <span class="tab-label">關於</span>
   </a>
