@@ -118,6 +118,24 @@
     color:var(--ink);
     letter-spacing:.03em;
   }
+  /* LINE 按鈕規範同 about.html：不仿製 LINE 商標圖示，僅用純文字
+     連結，背景沿用官方識別色 #06C755 */
+  .cake-line-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:2em;
+    width:100%;
+    padding:13px 22px;
+    border-radius:999px;
+    background:#06C755;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:transform .15s cubic-bezier(.4,0,.2,1), opacity .15s ease;
+  }
+  .cake-line-btn:active{transform:scale(.97);opacity:.85;}
   .story blockquote{
     margin:2.2em 0;
     padding:1.4em 0;
@@ -226,7 +244,8 @@
     <p class="lead">刀鋒滑過蛋糕體的瞬間，細緻綿密的組織緩緩回彈，鮮奶油的乳香混融著蛋糕胚的溫潤甘甜，在空氣中舒展開來。每一層堆疊都經過反覆試驗，只為在唇齒間留下最恰到好處的鬆軟與濕潤。</p>
     <p>「歪嘴雞」的蛋糕不追求繁複的裝飾，而是專注於食材本身的誠實風味：法國發酵奶油的細膩層次、日本抹茶的沉靜茶韻、比利時巧克力的深邃微苦，以及當季新鮮水果的清爽果香，都在簡單的外表下藏著層層心思。</p>
     <blockquote>真正的甜點從不喧嘩，它藏在每一口綿密的餘韻裡，成了忙碌日常中最溫柔的停頓。</blockquote>
-    <p>我們提供適合分享的六吋整模，也備有一人獨享的迷你尺寸，讓每一次選擇都能貼合當下的心情與場合。每個蛋糕皆為當日現做，數量有限，售完為止。</p>
+    <p>蛋糕訂製的細項多元，包含口味、尺寸、造型與內餡等，建議直接與我們洽詢討論，將依您的需求提供客製建議與報價。</p>
+    <a class="cake-line-btn" href="https://line.me/R/ti/p/@292xswnp" target="_blank" rel="noopener noreferrer" aria-label="加入LINE官方帳號洽詢蛋糕訂製（於新分頁開啟）">加入LINE官方帳號洽詢訂製</a>
   </article>
 </main>
 
