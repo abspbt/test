@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<title>Boutique Hotel</title>
+<link rel="manifest" href="/manifest.json">
+<style>
+  :root{
+    --ink:#fff;
+    --ink-dim:rgba(255,255,255,.78);
+    --glass-bg:rgba(15,23,32,.38);
+    --glass-border:rgba(255,255,255,.28);
+    --safe-b:env(safe-area-inset-bottom, 0px);
+    --safe-t:env(safe-area-inset-top, 0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    color:var(--ink);
+    background:#0b1220;
+    overflow-x:hidden;
+  }
+
+  .hero{
+    position:relative;
+    min-height:100dvh;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background:
+      radial-gradient(120% 60% at 78% 30%, rgba(255,180,110,.55), transparent 60%),
+      linear-gradient(180deg,#a9c9dd 0%, #e9c7a6 32%, #f2a86b 46%, #4d7fa0 62%, #1c3b52 100%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
+    pointer-events:none;
+  }
+
+  header{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:calc(16px + var(--safe-t)) 20px 16px;
+  }
+  .brand{font-size:15px;font-weight:600;letter-spacing:.02em;}
+  .menu-btn{
+    width:40px;height:40px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--glass-border);
+    border-radius:999px;
+    background:var(--glass-bg);
+  }
+  .menu-btn svg{width:18px;height:18px;}
+
+  .hero-copy{
+    position:relative;
+    z-index:2;
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:24px 28px;
+    gap:14px;
+  }
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--ink-dim);
+    animation:rise .7s ease-out both;
+  }
+  .title{
+    font-family:Georgia,"Noto Serif TC","Songti TC",serif;
+    font-weight:400;
+    font-size:clamp(40px,11vw,56px);
+    line-height:1.05;
+    animation:rise .7s .06s ease-out both;
+  }
+  .desc{
+    max-width:30ch;
+    font-size:14px;
+    line-height:1.7;
+    color:var(--ink-dim);
+    animation:rise .7s .12s ease-out both;
+  }
+  .cta{
+    margin-top:6px;
+    padding:14px 30px;
+    font-size:12px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--ink);
+    background:transparent;
+    border:1px solid rgba(255,255,255,.7);
+    border-radius:999px;
+    min-height:44px;
+    animation:rise .7s .18s ease-out both;
+  }
+  .cta:active{background:rgba(255,255,255,.14);}
+
+  .scroll-cue{
+    position:relative;
+    z-index:2;
+    display:flex;
+    justify-content:center;
+    padding:6px 0 18px;
+  }
+  .scroll-cue svg{
+    width:20px;height:28px;
+    opacity:.85;
+    animation:bob 1.8s ease-in-out infinite;
+  }
+
+  @keyframes rise{
+    from{opacity:.01;transform:translateY(14px);}
+    to{opacity:1;transform:none;}
+  }
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(8px);}
+  }
+
+  .tabbar{
+    position:fixed;
+    left:16px;right:16px;
+    bottom:calc(16px + var(--safe-b));
+    z-index:10;
+    display:flex;
+    justify-content:space-between;
+    padding:10px 6px;
+    background:var(--glass-bg);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid var(--glass-border);
+    border-radius:28px;
+  }
+  .tab{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    padding:6px 2px;
+    min-height:44px;
+    color:var(--ink-dim);
+    background:none;
+    border:none;
+    font:inherit;
+  }
+  .tab-icon{
+    width:34px;height:34px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:999px;
+    border:1px solid transparent;
+  }
+  .tab-icon svg{width:17px;height:17px;}
+  .tab-label{font-size:10px;letter-spacing:.01em;}
+  .tab.active{color:var(--ink);}
+  .tab.active .tab-icon{
+    background:#fff;
+    border-color:#fff;
+  }
+  .tab.active .tab-icon svg{stroke:#0b1220;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;}
+    .eyebrow,.title,.desc,.cta{opacity:1 !important;transform:none !important;}
+    .scroll-cue svg{opacity:.85 !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <header>
+    <span class="brand">Boutique Hotel</span>
+    <button class="menu-btn" aria-label="選單">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </header>
+
+  <div class="hero-copy">
+    <p class="eyebrow">Somewhere Left Series</p>
+    <h1 class="title">Boutique Hotel</h1>
+    <p class="desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+    <button class="cta">Learn More</button>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <svg viewBox="0 0 20 28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="10" y1="0" x2="10" y2="22"/><polyline points="3,15 10,22 17,15"/></svg>
+  </div>
+</div>
+
+<nav class="tabbar">
+  <button class="tab active">
+    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>
+    <span class="tab-label">Home</span>
+  </button>
+  <button class="tab">
+    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polygon points="15,9 13,13 9,15 11,11"/></svg></span>
+    <span class="tab-label">Explore</span>
+  </button>
+  <button class="tab">
+    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></span>
+    <span class="tab-label">Experiences</span>
+  </button>
+  <button class="tab">
+    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></span>
+    <span class="tab-label">Book Now</span>
+  </button>
+  <button class="tab">
+    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="currentColor" stroke="none"/></svg></span>
+    <span class="tab-label">About</span>
+  </button>
+</nav>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
+  }
+</script>
+</body>
+</html>
