@@ -145,6 +145,34 @@
     color:var(--ink);
   }
 
+  .cta-card{
+    max-width:34em;
+    margin:32px auto 0;
+    padding:26px 24px;
+    border:1px dashed rgba(217,181,138,.45);
+    border-radius:16px;
+    background:rgba(23,21,20,.55);
+    animation:rise .7s .22s ease-out both;
+  }
+  .cta-line{
+    font-weight:300;
+    font-size:14.5px;
+    line-height:1.9;
+    letter-spacing:.02em;
+    color:#d9b58a;
+  }
+  .cta-line + .cta-line{margin-top:14px;}
+  .cta-link{
+    color:#d9b58a;
+    text-decoration:underline;
+    text-underline-offset:3px;
+  }
+  .cta-note{
+    margin-top:22px;
+    padding-top:16px;
+    border-top:1px dashed rgba(217,181,138,.3);
+  }
+
   .tabbar{
     position:fixed;
     left:16px;right:16px;
@@ -242,6 +270,13 @@
     <blockquote>真正的克制並非寡淡，而是用恰到好處的溫度，成全每種食材獨一無二的生命質地。</blockquote>
     <p>當微溫與甘甜在喉間緩緩沉降，留下的正是大地最靜謐深長的滋養。在歪嘴雞烘焙的餐桌上，一碗溫沙拉不只是填補飢餓，更是用最質樸的風土之味，為匆碌的生活重新找回踏實而柔軟的呼吸。</p>
   </article>
+
+  <section class="cta-card">
+    <p class="cta-line">想嚐嚐溫沙拉？</p>
+    <p class="cta-line">線上訂餐：<a class="cta-link" href="https://order.nidin.shop/menu/23416" target="_blank" rel="noopener noreferrer">你訂！線上訂餐系統</a></p>
+    <p class="cta-line">店面選購：完整店家資訊請見　<a class="cta-link" href="about.html">關於我們</a>。</p>
+    <p class="cta-line cta-note">詳細營業日期請參考FB粉絲團：歪嘴雞烘焙</p>
+  </section>
 </main>
 
 <nav class="tabbar">
