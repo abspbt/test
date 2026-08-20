@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-cache-v2';
+const CACHE_NAME = 'pwa-cache-v3';
 const urlsToCache = ['/', '/index.html', '/about.html', '/manifest.json'];
 
 // 安裝並強制等待接管

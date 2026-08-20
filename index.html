@@ -73,15 +73,6 @@
     font-weight:300;
     letter-spacing:.02em;
   }
-  .menu-btn{
-    width:40px;height:40px;
-    display:flex;align-items:center;justify-content:center;
-    border:1px solid var(--glass-border);
-    border-radius:999px;
-    background:var(--glass-bg);
-  }
-  .menu-btn svg{width:18px;height:18px;}
-
   .hero-copy{
     position:relative;
     z-index:2;
@@ -116,21 +107,6 @@
     color:var(--ink-dim);
     animation:rise .7s .12s ease-out both;
   }
-  .cta{
-    margin-top:6px;
-    padding:14px 30px;
-    font-size:12px;
-    letter-spacing:.2em;
-    text-transform:uppercase;
-    color:var(--ink);
-    background:transparent;
-    border:1px solid rgba(255,255,255,.7);
-    border-radius:999px;
-    min-height:44px;
-    animation:rise .7s .18s ease-out both;
-  }
-  .cta:active{background:rgba(255,255,255,.14);}
-
   .scroll-cue{
     position:relative;
     z-index:2;
@@ -165,7 +141,7 @@
     backdrop-filter:blur(14px);
     -webkit-backdrop-filter:blur(14px);
     border:1px solid var(--glass-border);
-    border-radius:28px;
+    border-radius:16px;
   }
   .tab{
     flex:1;
@@ -209,7 +185,7 @@
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
-    .eyebrow,.title,.desc,.cta{opacity:1 !important;transform:none !important;}
+    .eyebrow,.title,.desc{opacity:1 !important;transform:none !important;}
     .scroll-cue svg{opacity:.85 !important;}
     .tab:active{transform:none;opacity:.55;}
     .tab:active .tab-icon{transform:none;}
@@ -221,16 +197,12 @@
 <div class="hero">
   <header>
     <span class="brand">歪嘴雞烘焙</span>
-    <button class="menu-btn" aria-label="選單">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
-    </button>
   </header>
 
   <div class="hero-copy">
     <p class="eyebrow">手工烘焙・每日現做</p>
     <h1 class="title">歪嘴雞烘焙</h1>
     <p class="desc">以溫度與時間慢慢等待，每一份貝果、蛋糕與沙拉，都是清晨手作的心意。</p>
-    <button class="cta">查看菜單</button>
   </div>
 
   <div class="scroll-cue" aria-hidden="true">
@@ -258,6 +230,10 @@
   <button class="tab">
     <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.5 6a3 3 0 01-3 2.5H8.5a3 3 0 01-3-2.5L4 11z"/><path d="M9 8c0-1 .8-1.2.8-2.2S9 4 9 4M13 8c0-1 .8-1.2.8-2.2S13 4 13 4"/></svg></span>
     <span class="tab-label">溫沙拉</span>
+  </button>
+  <button class="tab">
+    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.85-.8c.4.95.15 1.75-.7 2.45-.8.65-1.15 1.1-1.15 2.15"/><circle cx="12" cy="16.8" r=".6" fill="currentColor" stroke="none"/></svg></span>
+    <span class="tab-label">常見問題</span>
   </button>
 </nav>
 
