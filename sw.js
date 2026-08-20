@@ -1,5 +1,5 @@
-const CACHE_NAME = 'pwa-cache-v3';
-const urlsToCache = ['/', '/index.html', '/about.html', '/manifest.json'];
+const CACHE_NAME = 'pwa-cache-v4';
+const urlsToCache = ['/', '/index.html', '/about.html', '/faq.html', '/manifest.json'];
 
 // 安裝並強制等待接管
 self.addEventListener('install', event => {
