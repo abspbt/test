@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b1220">
+<meta name="theme-color" content="#17152a">
 <title>晨光烘焙</title>
 <link rel="manifest" href="/manifest.json">
 <style>
   :root{
     --ink:#fff;
     --ink-dim:rgba(255,255,255,.78);
-    --glass-bg:rgba(15,23,32,.38);
-    --glass-border:rgba(255,255,255,.28);
+    --glass-bg:rgba(16,15,26,.82);
+    --glass-border:rgba(255,255,255,.1);
     --safe-b:env(safe-area-inset-bottom, 0px);
     --safe-t:env(safe-area-inset-top, 0px);
   }
@@ -20,7 +20,7 @@
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     color:var(--ink);
-    background:#0b1220;
+    background:#17152a;
     overflow-x:hidden;
   }
 
@@ -31,8 +31,16 @@
     flex-direction:column;
     justify-content:space-between;
     background:
-      radial-gradient(120% 60% at 78% 30%, rgba(255,180,110,.55), transparent 60%),
-      linear-gradient(180deg,#a9c9dd 0%, #e9c7a6 32%, #f2a86b 46%, #4d7fa0 62%, #1c3b52 100%);
+      radial-gradient(110% 55% at 74% 22%, rgba(255,170,120,.4), transparent 62%),
+      linear-gradient(180deg,
+        #8f8d9c 0%,
+        #b79c9a 16%,
+        #eaab84 34%,
+        #ee8e63 47%,
+        #7a7796 63%,
+        #423f5e 78%,
+        #201d34 92%,
+        #17152a 100%);
   }
   .hero::after{
     content:"";
@@ -171,7 +179,7 @@
     background:#fff;
     border-color:#fff;
   }
-  .tab.active .tab-icon svg{stroke:#0b1220;}
+  .tab.active .tab-icon svg{stroke:#17152a;}
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
