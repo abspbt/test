@@ -187,6 +187,20 @@
   .tab.active:active .tab-icon{background:rgba(255,255,255,.82);}
   .tab.active .tab-icon svg{stroke:#17152a;}
 
+  @keyframes tabSpring{
+    0%{transform:scale(1);}
+    38%{transform:scale(.84);}
+    68%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+  }
+  @keyframes tabPulse{
+    0%{background:rgba(238,142,99,.6);border-color:rgba(238,142,99,.6);}
+    100%{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.32);}
+  }
+  .tab-icon.tap-fx{
+    animation:tabSpring .46s cubic-bezier(.34,1.56,.64,1), tabPulse .55s ease-out;
+  }
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
     .eyebrow,.page-title,.page-subtitle,.story{opacity:1 !important;transform:none !important;}
@@ -244,6 +258,18 @@
 </nav>
 
 <script>
+  // iOS Safari 若無 touch 監聽會延遲甚至跳過 :active，導致點擊回饋變慢
+  document.addEventListener('touchstart', function(){}, {passive:true});
+
+  document.querySelectorAll('.tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var icon = tab.querySelector('.tab-icon');
+      icon.classList.remove('tap-fx');
+      void icon.offsetWidth;
+      icon.classList.add('tap-fx');
+    });
+  });
+
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
   }
