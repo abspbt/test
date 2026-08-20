@@ -133,6 +133,80 @@
     color:var(--ink);
   }
 
+  .store-info{
+    max-width:34em;
+    margin:56px auto 0;
+    padding:26px 24px;
+    background:var(--glass-bg);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:1px solid var(--glass-border);
+    border-radius:18px;
+    animation:rise .7s .24s ease-out both;
+  }
+  .store-info-title{
+    font-family:"Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+    font-weight:300;
+    font-size:18px;
+    letter-spacing:.06em;
+    color:var(--ink);
+  }
+  .store-info-list{
+    list-style:none;
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .store-info-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-size:13.5px;
+    font-weight:300;
+    line-height:1.7;
+    color:var(--ink-soft);
+  }
+  .store-info-list svg{
+    width:18px;height:18px;flex:none;
+    margin-top:1px;
+    color:var(--ink-dim);
+  }
+  /* LINE 按鈕規範同 yjg-order/site：不仿製 LINE 商標圖示，僅用純文字
+     連結，背景沿用官方識別色 #06C755，文案用「加入 LINE 官方帳號」 */
+  .store-info-line{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:20px;
+    width:100%;
+    padding:13px 22px;
+    border-radius:999px;
+    background:#06C755;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:transform .15s cubic-bezier(.4,0,.2,1), opacity .15s ease;
+  }
+  .store-info-line:active{transform:scale(.97);opacity:.85;}
+  .store-info-map{
+    margin-top:20px;
+    border-radius:14px;
+    overflow:hidden;
+    border:1px solid var(--glass-border);
+    aspect-ratio:4/3;
+  }
+  .store-info-map iframe{width:100%;height:100%;border:0;display:block;}
+  .store-info-map-link{
+    display:inline-block;
+    margin-top:12px;
+    font-size:12.5px;
+    color:var(--ink-dim);
+    text-decoration:underline;
+    text-underline-offset:2px;
+  }
+
   .tabbar{
     position:fixed;
     left:16px;right:16px;
@@ -229,6 +303,29 @@
     <blockquote>真正的講究並非堆疊繁複，而是用一雙有溫度的手，為挑剔的靈魂留一道溫熱的微光。</blockquote>
     <p>細嚼時自舌根漫開的麥香尾韻，像極了南方午後緩緩灑落的暖陽。歪嘴雞烘焙將「吃」這件事還原為最動人的日常儀式——在快速流轉的城市節奏裡，以專注與善意慢火烘烤，端出一份熨燙人心的踏實滋味。</p>
   </article>
+
+  <section class="store-info">
+    <h2 class="store-info-title">店家資訊</h2>
+    <ul class="store-info-list">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <span>高雄市鳳山區鎮西里自立街85號</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+        <span>公休日請參考FB粉絲團：歪嘴雞烘焙</span>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="11" r="1.8"/><path d="M6 15.5c.5-1.6 1.9-2.3 2.5-2.3s2 .7 2.5 2.3"/><path d="M14 9.5h4"/><path d="M14 13h4"/></svg>
+        <span>統一編號：00904220</span>
+      </li>
+    </ul>
+    <a class="store-info-line" href="https://line.me/R/ti/p/@292xswnp" target="_blank" rel="noopener noreferrer" aria-label="加入LINE官方帳號（於新分頁開啟）">加入LINE官方帳號</a>
+    <div class="store-info-map">
+      <iframe src="https://www.google.com/maps?q=高雄市鳳山區鎮西里自立街85號&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="店家地圖位置"></iframe>
+    </div>
+    <a class="store-info-map-link" href="https://www.google.com/maps/search/?api=1&query=高雄市鳳山區鎮西里自立街85號" target="_blank" rel="noopener noreferrer">在 Google 地圖中開啟</a>
+  </section>
 </main>
 
 <nav class="tabbar">
