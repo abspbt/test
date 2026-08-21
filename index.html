@@ -43,35 +43,11 @@
     background:#17152a;
     overflow:hidden;
   }
-  /* 底圖：套用日系雜誌調色（降飽和、拉高陰影、加一點暖黃） */
   .hero-bg{
     position:absolute;
     inset:-4%;
     z-index:0;
     background:url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
-    filter:saturate(.8) contrast(.88) brightness(1.08) sepia(.12);
-    pointer-events:none;
-  }
-  /* 底片顆粒感 */
-  .hero-grain{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    background-size:140px 140px;
-    opacity:.05;
-    mix-blend-mode:overlay;
-    pointer-events:none;
-  }
-  /* 暖調柔光，做出雜誌印刷的柔和光感 */
-  .hero-tone{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    background:
-      radial-gradient(120% 70% at 50% 36%, rgba(255,224,179,.26), transparent 62%),
-      linear-gradient(155deg, rgba(255,214,170,.12), rgba(90,72,62,.1));
-    mix-blend-mode:soft-light;
     pointer-events:none;
   }
   /* 文字可讀性遮罩 */
@@ -184,8 +160,6 @@
 
 <div class="hero">
   <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-grain" aria-hidden="true"></div>
-  <div class="hero-tone" aria-hidden="true"></div>
   <div class="hero-scrim" aria-hidden="true"></div>
   <header>
     <span class="brand">歪嘴雞烘焙</span>
