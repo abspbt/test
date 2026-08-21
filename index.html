@@ -25,13 +25,22 @@
     --glass-border:rgba(255,255,255,.1);
     --safe-b:env(safe-area-inset-bottom, 0px);
     --safe-t:env(safe-area-inset-top, 0px);
+    --nav-gutter:116px;
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-  html,body{height:100%;background:#17152a;}
+  /* 底圖與文字可讀性遮罩直接掛在 html,body 上（而非子層 div）。
+     瀏覽器保證 html/body 的背景一定滿版覆蓋，包含 Safari 網址列收合
+     或頁面彈跳露出的區域，不會再有子層背景跟不上視窗高度的留白問題。 */
+  html,body{
+    height:100%;
+    background:
+      linear-gradient(180deg, rgba(10,8,20,.62) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.12) 58%, rgba(10,8,20,.76) 100%) center / cover no-repeat,
+      url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
+    background-color:#17152a;
+  }
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     color:var(--ink);
-    background:#17152a;
     overflow-x:hidden;
   }
 
@@ -41,24 +50,6 @@
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    background:#17152a;
-  }
-  /* 底圖與遮罩改用 position:fixed 貼齊視窗，避免 Safari 網址列收合／彈跳時
-     露出 .hero 本身的底色，造成上下留白 */
-  .hero-bg{
-    position:fixed;
-    inset:0;
-    z-index:0;
-    background:url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
-    pointer-events:none;
-  }
-  /* 文字可讀性遮罩 */
-  .hero-scrim{
-    position:fixed;
-    inset:0;
-    z-index:1;
-    background:linear-gradient(180deg, rgba(10,8,20,.62) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.12) 58%, rgba(10,8,20,.76) 100%);
-    pointer-events:none;
   }
 
   header{
@@ -164,7 +155,7 @@
     background:rgba(32,30,38,.5);
     backdrop-filter:blur(16px);
     -webkit-backdrop-filter:blur(16px);
-    padding:calc(56px + var(--safe-t)) calc(132px + 16px) calc(28px + var(--safe-b)) 26px;
+    padding:calc(56px + var(--safe-t)) var(--nav-gutter) calc(28px + var(--safe-b)) 26px;
     overflow-y:auto;
     -webkit-overflow-scrolling:touch;
     opacity:0;
@@ -180,7 +171,7 @@
   .panel-close{
     position:absolute;
     top:calc(16px + var(--safe-t));
-    right:calc(132px + 16px);
+    right:calc(var(--nav-gutter) - 16px);
     width:34px;
     height:34px;
     display:flex;
@@ -222,7 +213,7 @@
   .panel-photo{
     display:block;
     width:100%;
-    max-width:220px;
+    max-width:150px;
     aspect-ratio:4/3;
     object-fit:cover;
     border-radius:12px;
@@ -314,8 +305,6 @@
 <body>
 
 <div class="hero">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-scrim" aria-hidden="true"></div>
   <header>
     <span class="brand">歪嘴雞烘焙</span>
   </header>
