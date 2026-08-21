@@ -140,6 +140,19 @@
     align-items:stretch;
     transform:translateY(-50%);
   }
+  /* 導覽列局部壓底：底圖在「溫沙拉／關於／Q&A」一帶是白瓷碗與亮木紋，
+     實測字後底色達 rgb(180,168,155)，只靠 text-shadow 補不到 AA。
+     往右加深、往左淡出，上下用 mask 收邊，避免出現硬邊矩形。 */
+  .side-nav::before{
+    content:"";
+    position:absolute;
+    inset:-20px -26px -20px -40px;
+    z-index:-1;
+    pointer-events:none;
+    background:linear-gradient(90deg, rgba(8,6,12,0) 0%, rgba(8,6,12,.30) 34%, rgba(8,6,12,.52) 100%);
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+    mask-image:linear-gradient(180deg, transparent 0, #000 14%, #000 86%, transparent 100%);
+  }
   .navtab{
     display:flex;
     align-items:baseline;
@@ -153,14 +166,17 @@
     border:none;
     border-top:1px solid rgba(255,255,255,.24);
     border-radius:0;
-    color:var(--ink-dim);
+    color:var(--ink-soft);
     font:inherit;
     font-size:14px;
     letter-spacing:.16em;
     text-align:right;
     cursor:pointer;
     -webkit-tap-highlight-color:transparent;
-    text-shadow:0 1px 8px rgba(0,0,0,.5);
+    /* 緊貼筆畫的黑色暈影（非描邊）：1px 那層負責貼邊、4px 那層柔化、
+       6px 那層做整體離地感。刻意不用 -webkit-text-stroke——14px 的繁中
+       筆畫密度高，描邊會把「嘴／雞／蛋」的字腔填實反而更難讀。 */
+    text-shadow:0 0 1px rgba(0,0,0,.72), 0 0 4px rgba(0,0,0,.55), 0 1px 6px rgba(0,0,0,.45);
     transition:opacity .15s ease, color .15s ease;
   }
   .navtab:first-child{border-top:none;}
@@ -168,7 +184,7 @@
     font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC",serif;
     font-size:11px;
     letter-spacing:0;
-    opacity:.55;
+    opacity:.72;
   }
   .navtab:active{opacity:.6;}
   .navtab.active{color:#f4e3c1;font-weight:600;}
