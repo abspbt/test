@@ -3,8 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#17152a">
+<!-- theme-color 取自底圖上下緣疊完 scrim 後的實色（上 ≈#312425、下 ≈#1F171C），
+     讓 iOS Safari 狀態列／工具列的色塊與底圖銜接，視覺上等於滿版 -->
+<meta name="theme-color" content="#2A1F20">
 <meta name="format-detection" content="telephone=no">
+<!-- 加入主畫面後以全螢幕開啟，內容延伸至狀態列下方（配合 viewport-fit=cover 與 safe-area padding） -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="歪嘴雞烘焙">
 <title>歪嘴雞烘焙</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="preload" as="image" href="assets/img/home-bg.jpg">
@@ -31,7 +38,8 @@
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
   html,body{
     height:100%;
-    background:#17152a;
+    /* 與 theme-color 同色：橡皮筋回彈或瀏覽器取樣邊緣色時都不會露出冷色底 */
+    background:#2A1F20;
     /* 關閉橡皮筋回彈，避免下拉時把底圖之外的底色扯進畫面 */
     overscroll-behavior:none;
   }
@@ -68,7 +76,7 @@
   }
   .hero-scrim{
     z-index:1;
-    background:linear-gradient(180deg, rgba(10,8,20,.62) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.12) 58%, rgba(10,8,20,.76) 100%);
+    background:linear-gradient(180deg, rgba(10,8,20,.70) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.12) 58%, rgba(10,8,20,.76) 100%);
   }
 
   header{
