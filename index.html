@@ -104,7 +104,7 @@
     flex-direction:column;
     align-items:flex-start;
     text-align:left;
-    padding:24px calc(132px + 16px) calc(28px + var(--safe-b)) 28px;
+    padding:24px calc(96px + 16px) calc(28px + var(--safe-b)) 28px;
     gap:10px;
   }
   .eyebrow{
@@ -137,42 +137,41 @@
   .side-nav{
     position:fixed;
     top:50%;
-    right:0;
+    right:26px;
     z-index:10;
     display:flex;
     flex-direction:column;
     align-items:stretch;
-    gap:12px;
     transform:translateY(-50%);
   }
   .navtab{
-    width:132px;
-    padding:13px 18px;
-    padding-right:calc(18px + env(safe-area-inset-right, 0px));
-    background:rgba(30,28,36,.66);
-    backdrop-filter:blur(12px);
-    -webkit-backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.13);
-    border-right:none;
-    border-radius:8px 0 0 8px;
-    color:var(--ink);
+    display:flex;
+    align-items:baseline;
+    justify-content:flex-end;
+    gap:10px;
+    padding:12px 0;
+    background:none;
+    border:none;
+    border-top:1px solid rgba(255,255,255,.24);
+    color:var(--ink-dim);
     font:inherit;
     font-size:14px;
-    letter-spacing:.04em;
-    text-align:center;
+    letter-spacing:.16em;
+    text-align:right;
     cursor:pointer;
-    transition:transform .15s cubic-bezier(.4,0,.2,1), background .15s ease, opacity .15s ease;
+    text-shadow:0 1px 8px rgba(0,0,0,.5);
+    transition:opacity .15s ease, color .15s ease;
   }
-  .navtab:active{
-    transform:scale(.96);
-    opacity:.75;
+  .navtab:first-child{border-top:none;}
+  .navtab .idx{
+    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC",serif;
+    font-size:11px;
+    letter-spacing:0;
+    opacity:.55;
   }
-  .navtab.active{
-    background:rgba(255,255,255,.92);
-    border-color:#fff;
-    color:#17152a;
-    font-weight:600;
-  }
+  .navtab:active{opacity:.6;}
+  .navtab.active{color:#f4e3c1;font-weight:600;}
+  .navtab.active .idx{opacity:1;color:#f4e3c1;}
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
@@ -201,12 +200,12 @@
 </div>
 
 <nav class="side-nav">
-  <button type="button" class="navtab active">首頁</button>
-  <button type="button" class="navtab">貝果</button>
-  <button type="button" class="navtab">蛋糕</button>
-  <button type="button" class="navtab">溫沙拉</button>
-  <button type="button" class="navtab">關於</button>
-  <button type="button" class="navtab">Q&amp;A</button>
+  <button type="button" class="navtab active"><span class="idx">01</span><span>首頁</span></button>
+  <button type="button" class="navtab"><span class="idx">02</span><span>貝果</span></button>
+  <button type="button" class="navtab"><span class="idx">03</span><span>蛋糕</span></button>
+  <button type="button" class="navtab"><span class="idx">04</span><span>溫沙拉</span></button>
+  <button type="button" class="navtab"><span class="idx">05</span><span>關於</span></button>
+  <button type="button" class="navtab"><span class="idx">06</span><span>Q&amp;A</span></button>
 </nav>
 
 <script>
