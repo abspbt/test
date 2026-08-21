@@ -29,16 +29,7 @@
     --nav-gutter:116px;
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-  /* 底圖與文字可讀性遮罩直接掛在 html,body 上（而非子層 div）。
-     瀏覽器保證 html/body 的背景一定滿版覆蓋，包含 Safari 網址列收合
-     或頁面彈跳露出的區域，不會再有子層背景跟不上視窗高度的留白問題。 */
-  html,body{
-    height:100%;
-    background:
-      linear-gradient(180deg, rgba(10,8,20,.62) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.12) 58%, rgba(10,8,20,.76) 100%) center / cover no-repeat,
-      url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
-    background-color:#17152a;
-  }
+  html,body{height:100%;background:#17152a;}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     color:var(--ink);
@@ -48,9 +39,32 @@
   .hero{
     position:relative;
     min-height:100dvh;
+    min-height:calc(var(--vh, 1vh) * 100);
     display:flex;
     flex-direction:column;
     justify-content:space-between;
+  }
+  /* 底圖與文字可讀性遮罩：position:fixed 貼齊視窗，高度用 JS 量測的
+     --vh（真實 window.innerHeight，非 CSS vh/dvh 單位）計算，避免
+     Safari 網址列收合／展開時背景跟不上視窗高度，在頂部瀏海或底部
+     Home 橫條露出 .hero 本身的底色 */
+  .hero-bg{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:100vh;
+    height:calc(var(--vh, 1vh) * 100);
+    z-index:0;
+    background:url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
+    pointer-events:none;
+  }
+  .hero-scrim{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:100vh;
+    height:calc(var(--vh, 1vh) * 100);
+    z-index:1;
+    background:linear-gradient(180deg, rgba(10,8,20,.62) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.12) 58%, rgba(10,8,20,.76) 100%);
+    pointer-events:none;
   }
 
   header{
@@ -151,7 +165,9 @@
   /* 分頁內容面板：導覽列左側的半透明灰底文章面板 */
   .content-panel{
     position:fixed;
-    inset:0;
+    top:0;left:0;right:0;
+    height:100vh;
+    height:calc(var(--vh, 1vh) * 100);
     z-index:9;
     background:rgba(32,30,38,.5);
     backdrop-filter:blur(16px);
@@ -305,6 +321,8 @@
 <body>
 
 <div class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
   <header>
     <span class="brand">歪嘴雞烘焙</span>
   </header>
@@ -558,6 +576,20 @@
 <script>
   // iOS Safari 若無 touch 監聽會延遲甚至跳過 :active，導致點擊回饋變慢
   document.addEventListener('touchstart', function(){}, {passive:true});
+
+  // 用實際量測的 window.innerHeight 算出 --vh，取代 CSS vh/dvh 單位，
+  // 避免 Safari 網址列收合／展開時底圖高度沒跟著視窗即時更新
+  (function(){
+    function setVh(){
+      document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+    }
+    setVh();
+    window.addEventListener('resize', setVh);
+    window.addEventListener('orientationchange', setVh);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', setVh);
+    }
+  })();
 
   (function(){
     var panel = document.getElementById('content-panel');
