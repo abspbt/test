@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#17152a">
 <title>歪嘴雞烘焙</title>
 <link rel="manifest" href="/manifest.json">
+<link rel="preload" as="image" href="assets/img/home-bg.jpg">
 <style>
   @font-face{
     font-family:"Brand LXGW WenKai TC Light";
@@ -39,23 +40,14 @@
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    background:
-      radial-gradient(110% 55% at 74% 22%, rgba(255,170,120,.4), transparent 62%),
-      linear-gradient(180deg,
-        #8f8d9c 0%,
-        #b79c9a 16%,
-        #eaab84 34%,
-        #ee8e63 47%,
-        #7a7796 63%,
-        #423f5e 78%,
-        #201d34 92%,
-        #17152a 100%);
+    background:url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
+    background-color:#17152a;
   }
   .hero::after{
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,.55) 100%);
+    background:linear-gradient(180deg, rgba(10,8,20,.6) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.1) 58%, rgba(10,8,20,.72) 100%);
     pointer-events:none;
   }
 
@@ -76,14 +68,12 @@
   .hero-copy{
     position:relative;
     z-index:2;
-    flex:1;
     display:flex;
     flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:24px 28px;
-    gap:14px;
+    align-items:flex-start;
+    text-align:left;
+    padding:24px calc(120px + 16px + env(safe-area-inset-right, 0px)) calc(28px + var(--safe-b)) 28px;
+    gap:10px;
   }
   .eyebrow{
     font-size:11px;
@@ -95,13 +85,13 @@
   .title{
     font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
     font-weight:300;
-    font-size:clamp(40px,11vw,56px);
+    font-size:clamp(32px,9vw,44px);
     line-height:1.2;
     letter-spacing:.06em;
     animation:rise .7s .06s ease-out both;
   }
   .desc{
-    max-width:30ch;
+    max-width:28ch;
     font-size:14px;
     line-height:1.7;
     color:var(--ink-dim);
@@ -112,79 +102,48 @@
     to{opacity:1;transform:none;}
   }
 
-  .tabbar{
+  .side-nav{
     position:fixed;
-    left:16px;right:16px;
-    bottom:calc(16px + var(--safe-b));
+    top:50%;
+    right:calc(16px + env(safe-area-inset-right, 0px));
     z-index:10;
     display:flex;
-    justify-content:space-between;
-    padding:10px 6px;
-    background:var(--glass-bg);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    border:1px solid var(--glass-border);
-    border-radius:16px;
-  }
-  .tab{
-    flex:1;
-    display:flex;
     flex-direction:column;
-    align-items:center;
-    gap:6px;
-    padding:6px 2px;
-    min-height:44px;
-    color:var(--ink-dim);
-    background:none;
-    border:none;
-    font:inherit;
-    text-decoration:none;
-    transition:transform .15s cubic-bezier(.4,0,.2,1), opacity .15s ease;
+    align-items:flex-end;
+    gap:14px;
+    transform:translateY(-50%);
   }
-  .tab:active{
-    transform:scale(.92);
-    opacity:.65;
-  }
-  .tab-icon{
-    width:34px;height:34px;
-    display:flex;align-items:center;justify-content:center;
+  .navtab{
+    min-width:96px;
+    padding:12px 20px;
+    background:rgba(70,68,76,.48);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.16);
     border-radius:999px;
-    border:1px solid transparent;
-    transition:background .15s ease, border-color .15s ease, transform .15s ease;
+    color:var(--ink);
+    font:inherit;
+    font-size:14px;
+    letter-spacing:.04em;
+    text-align:center;
+    cursor:pointer;
+    transition:transform .15s cubic-bezier(.4,0,.2,1), background .15s ease, opacity .15s ease;
   }
-  .tab:active .tab-icon{
-    transform:scale(.9);
-    background:rgba(255,255,255,.16);
+  .navtab:active{
+    transform:scale(.94);
+    opacity:.75;
   }
-  .tab-icon svg{width:17px;height:17px;}
-  .tab-label{font-size:10px;letter-spacing:.01em;}
-  .tab.active{color:var(--ink);}
-  .tab.active .tab-icon{
-    background:#fff;
+  .navtab.active{
+    background:rgba(255,255,255,.92);
     border-color:#fff;
-  }
-  .tab.active:active .tab-icon{background:rgba(255,255,255,.82);}
-  .tab.active .tab-icon svg{stroke:#17152a;}
-
-  @keyframes tabSpring{
-    0%{transform:scale(1);}
-    38%{transform:scale(.84);}
-    68%{transform:scale(1.1);}
-    100%{transform:scale(1);}
-  }
-  @keyframes tabPulse{
-    0%{background:rgba(238,142,99,.6);border-color:rgba(238,142,99,.6);}
-    100%{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.32);}
-  }
-  .tab-icon.tap-fx{
-    animation:tabSpring .46s cubic-bezier(.34,1.56,.64,1), tabPulse .55s ease-out;
+    color:#17152a;
+    font-weight:600;
   }
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
     .eyebrow,.title,.desc{opacity:1 !important;transform:none !important;}
-    .tab:active{transform:none;opacity:.55;}
-    .tab:active .tab-icon{transform:none;}
+    .navtab:active{transform:none;opacity:.6;}
   }
 </style>
 </head>
@@ -203,45 +162,17 @@
 
 </div>
 
-<nav class="tabbar">
-  <a class="tab active" href="index.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>
-    <span class="tab-label">首頁</span>
-  </a>
-  <a class="tab" href="about.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="currentColor" stroke="none"/></svg></span>
-    <span class="tab-label">關於</span>
-  </a>
-  <a class="tab" href="bagel.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg></span>
-    <span class="tab-label">貝果</span>
-  </a>
-  <a class="tab" href="cake.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.8.9.8 1.7 0 2.6-.8-.9-.8-1.7 0-2.6Z"/><path d="M12 5.6v3.6"/><rect x="4.5" y="10.4" width="15" height="9.2" rx="4.5"/><path d="M6.3 15c1-1.1 2-1.1 3 0s2 1.1 3 0 2-1.1 3-1.1 1.6.5 2.4 1.1"/></svg></span>
-    <span class="tab-label">蛋糕</span>
-  </a>
-  <a class="tab" href="salad.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.5 6a3 3 0 01-3 2.5H8.5a3 3 0 01-3-2.5L4 11z"/><path d="M12 11c-.3-1.8-1.6-2.2-1.6-3.8"/><path d="M12 11c.2-1.3 1.2-1.6 1.7-2.8"/></svg></span>
-    <span class="tab-label">溫沙拉</span>
-  </a>
-  <a class="tab" href="faq.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.85-.8c.4.95.15 1.75-.7 2.45-.8.65-1.15 1.1-1.15 2.15"/><circle cx="12" cy="16.8" r=".6" fill="currentColor" stroke="none"/></svg></span>
-    <span class="tab-label">Q&A</span>
-  </a>
+<nav class="side-nav">
+  <button type="button" class="navtab active">首頁</button>
+  <button type="button" class="navtab">貝果</button>
+  <button type="button" class="navtab">蛋糕</button>
+  <button type="button" class="navtab">溫沙拉</button>
+  <button type="button" class="navtab">關於</button>
 </nav>
 
 <script>
   // iOS Safari 若無 touch 監聽會延遲甚至跳過 :active，導致點擊回饋變慢
   document.addEventListener('touchstart', function(){}, {passive:true});
-
-  document.querySelectorAll('.tab').forEach(function(tab){
-    tab.addEventListener('click', function(){
-      var icon = tab.querySelector('.tab-icon');
-      icon.classList.remove('tap-fx');
-      void icon.offsetWidth;
-      icon.classList.add('tap-fx');
-    });
-  });
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
