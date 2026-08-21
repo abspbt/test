@@ -41,18 +41,19 @@
     flex-direction:column;
     justify-content:space-between;
     background:#17152a;
-    overflow:hidden;
   }
+  /* 底圖與遮罩改用 position:fixed 貼齊視窗，避免 Safari 網址列收合／彈跳時
+     露出 .hero 本身的底色，造成上下留白 */
   .hero-bg{
-    position:absolute;
-    inset:-4%;
+    position:fixed;
+    inset:0;
     z-index:0;
     background:url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
     pointer-events:none;
   }
   /* 文字可讀性遮罩 */
   .hero-scrim{
-    position:absolute;
+    position:fixed;
     inset:0;
     z-index:1;
     background:linear-gradient(180deg, rgba(10,8,20,.62) 0%, rgba(10,8,20,.08) 24%, rgba(10,8,20,.12) 58%, rgba(10,8,20,.76) 100%);
