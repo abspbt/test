@@ -160,13 +160,11 @@
   .content-panel{
     position:fixed;
     inset:0;
-    right:132px;
     z-index:9;
-    background:rgba(28,26,34,.72);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border-right:1px solid rgba(255,255,255,.08);
-    padding:calc(56px + var(--safe-t)) 26px calc(28px + var(--safe-b));
+    background:rgba(32,30,38,.5);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    padding:calc(56px + var(--safe-t)) calc(132px + 16px) calc(28px + var(--safe-b)) 26px;
     overflow-y:auto;
     -webkit-overflow-scrolling:touch;
     opacity:0;
@@ -182,7 +180,7 @@
   .panel-close{
     position:absolute;
     top:calc(16px + var(--safe-t));
-    right:16px;
+    right:calc(132px + 16px);
     width:34px;
     height:34px;
     display:flex;
