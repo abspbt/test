@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="view-transition" content="same-origin">
 <!-- theme-color 取自底圖上下緣疊完 scrim 後的實色（上 ≈#312425、下 ≈#1F171C），
      讓 iOS Safari 狀態列／工具列的色塊與底圖銜接，視覺上等於滿版 -->
 <meta name="theme-color" content="#2A1F20">
@@ -181,10 +182,20 @@
   .navtab.active{color:#f4e3c1;font-weight:600;}
   .navtab.active .idx{opacity:1;color:#f4e3c1;}
 
+  /* 換頁平滑轉場：View Transitions API（配合 <meta name="view-transition">）。
+     不支援的瀏覽器（Firefox／舊版 Safari）會直接跳頁，屬漸進增強，不影響功能。 */
+  @media (prefers-reduced-motion: no-preference){
+    ::view-transition-old(root){animation:vt-out .2s cubic-bezier(.4,0,.2,1) both;}
+    ::view-transition-new(root){animation:vt-in .26s cubic-bezier(.4,0,.2,1) both;}
+  }
+  @keyframes vt-in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  @keyframes vt-out{from{opacity:1;transform:none;}to{opacity:0;transform:translateY(-10px);}}
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
     .eyebrow,.title,.desc{opacity:1 !important;transform:none !important;}
     .navtab:active{transform:none;opacity:.6;}
+    ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none !important;}
   }
 </style>
 </head>

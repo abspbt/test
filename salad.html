@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="view-transition" content="same-origin">
 <meta name="theme-color" content="#17152a">
 <!-- 加入主畫面後以全螢幕開啟，內容延伸至狀態列下方（配合 viewport-fit=cover 與 safe-area padding） -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -248,8 +249,18 @@
     animation:tabSpring .46s cubic-bezier(.34,1.56,.64,1), tabPulse .55s ease-out;
   }
 
+  /* 換頁平滑轉場：View Transitions API（配合 <meta name="view-transition">）。
+     不支援的瀏覽器（Firefox／舊版 Safari）會直接跳頁，屬漸進增強，不影響功能。 */
+  @media (prefers-reduced-motion: no-preference){
+    ::view-transition-old(root){animation:vt-out .2s cubic-bezier(.4,0,.2,1) both;}
+    ::view-transition-new(root){animation:vt-in .26s cubic-bezier(.4,0,.2,1) both;}
+  }
+  @keyframes vt-in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+  @keyframes vt-out{from{opacity:1;transform:none;}to{opacity:0;transform:translateY(-10px);}}
+
   @media (prefers-reduced-motion: reduce){
     *{animation:none !important;transition:none !important;}
+    ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none !important;}
     .eyebrow,.page-title,.page-subtitle,.story{opacity:1 !important;transform:none !important;}
     .tab:active{transform:none;opacity:.55;}
     .tab:active .tab-icon{transform:none;}
