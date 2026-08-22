@@ -145,6 +145,24 @@
     color:var(--ink);
     letter-spacing:.03em;
   }
+  /* LINE 按鈕規範同 about.html/cake.html：不仿製 LINE 商標圖示，僅用純文字
+     連結，背景沿用官方識別色 #06C755 */
+  .bagel-line-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:2em;
+    width:100%;
+    padding:13px 22px;
+    border-radius:999px;
+    background:#06C755;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:transform .15s cubic-bezier(.4,0,.2,1), opacity .15s ease;
+  }
+  .bagel-line-btn:active{transform:scale(.97);opacity:.85;}
   .story blockquote{
     margin:2.2em 0;
     padding:1.4em 0;
@@ -248,6 +266,8 @@
     <p>「歪嘴雞」看似對味道極盡挑剔，本質卻是對生活純粹的深情執著。每一只貝果都是一份跨越風土的誠意清單：從紐西蘭全脂奶粉的溫潤基底、澳洲乳酪的絲滑微酸，到法芙娜可可深邃的微苦、日本抹茶沉靜的茶韻，以及急速冷凍綜合野莓在齒間迸發的鮮活果酸；甚至更大膽地將台灣在地剝皮辣椒與雙色乳酪起司揉入麵團，在鹹香與微辛間撞擊出令人會心一笑的在地記憶。</p>
     <blockquote>真正的美味從不喧嘩，它藏在手工揉製的指紋紋理裡，成了晨光中最安靜的陪伴。</blockquote>
     <p>為了陪伴不同的日常節奏，我們貼心備有飽滿扎實的「大顆美味款」（100g／5入裝），與優雅適口的「小巧好入口款」（65g／8入裝）。每只貝果皆由雙手揉捏烘焙，那細微的重量起伏並非規格的不一，而是手工藝留給生活最真實、最溫暖的印記。</p>
+    <p>貝果為限量手工製作，不定期開放預購，詳細開賣時間會透過 LINE 官方帳號公告。</p>
+    <a class="bagel-line-btn" href="https://line.me/R/ti/p/@292xswnp" target="_blank" rel="noopener noreferrer" aria-label="加入 LINE 官方帳號（於新分頁開啟）">加入 LINE 官方帳號</a>
   </article>
 </main>
 
