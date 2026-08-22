@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="view-transition" content="same-origin">
-<meta name="theme-color" content="#17152a">
+<meta name="theme-color" content="#2A1F20">
 <meta name="format-detection" content="telephone=no">
 <!-- 加入主畫面後以全螢幕開啟，內容延伸至狀態列下方（配合 viewport-fit=cover 與 safe-area padding） -->
 <meta name="mobile-web-app-capable" content="yes">
@@ -34,24 +34,24 @@
     --safe-t:env(safe-area-inset-top, 0px);
   }
   *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-  html,body{min-height:100%;background:#17152a;}
+  html,body{min-height:100%;background:#2A1F20;}
   body{
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
     color:var(--ink);
-    /* 頂部沿用首頁的日出色階，僅維持固定像素高度（不隨頁面長度縮放），
-       之後收斂為與首頁底色一致的深藍，兩個尾端色標相同，長文捲動時
+    /* 頂部沿用首頁的暖棕日出色階，僅維持固定像素高度（不隨頁面長度縮放），
+       之後收斂為與首頁底色一致的暖棕色，兩個尾端色標相同，長文捲動時
        不會再重複貼一次漸層 */
     background:
       radial-gradient(480px 380px at 74% 70px, rgba(255,170,120,.4), transparent 62%),
       linear-gradient(180deg,
-        #8f8d9c 0px,
-        #b79c9a 34px,
+        #6b5645 0px,
+        #9c7a56 34px,
         #eaab84 84px,
         #ee8e63 130px,
-        #7a7796 210px,
-        #423f5e 290px,
-        #17152a 380px,
-        #17152a 100%);
+        #6b4a35 210px,
+        #3a2c22 290px,
+        #2A1F20 380px,
+        #2A1F20 100%);
     overflow-x:hidden;
   }
 
@@ -72,7 +72,7 @@
   main{
     position:relative;
     z-index:2;
-    padding:8px 28px calc(140px + var(--safe-b));
+    padding:8px calc(96px + 16px) calc(28px + var(--safe-b)) 28px;
   }
   .page-head{
     padding:28px 0 8px;
@@ -227,73 +227,54 @@
     text-underline-offset:2px;
   }
 
-  .tabbar{
+  /* 側邊直排文字導覽：與首頁 index.html 共用同一套視覺 */
+  .side-nav{
     position:fixed;
-    left:16px;right:16px;
-    bottom:calc(16px + var(--safe-b));
+    top:50%;
+    right:26px;
     z-index:10;
     display:flex;
-    justify-content:space-between;
-    padding:10px 6px;
-    background:var(--glass-bg);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    border:1px solid var(--glass-border);
-    border-radius:16px;
-  }
-  .tab{
-    flex:1;
-    display:flex;
     flex-direction:column;
-    align-items:center;
-    gap:6px;
-    padding:6px 2px;
-    min-height:44px;
-    color:var(--ink-dim);
+    align-items:stretch;
+    transform:translateY(-50%);
+  }
+  .navtab{
+    display:flex;
+    align-items:baseline;
+    justify-content:flex-end;
+    gap:10px;
+    padding:12px 0;
+    -webkit-appearance:none;
+    appearance:none;
     background:none;
+    background-color:transparent;
     border:none;
-    font:inherit;
+    border-top:1px solid rgba(255,255,255,.24);
+    border-radius:0;
+    color:var(--ink-soft);
     text-decoration:none;
-    transition:transform .15s cubic-bezier(.4,0,.2,1), opacity .15s ease;
+    font:inherit;
+    font-size:14px;
+    letter-spacing:.16em;
+    text-align:right;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    text-shadow:
+      0 0 1px rgba(26,17,12,.62),
+      0 0 3px rgba(26,17,12,.45),
+      0 1px 4px rgba(26,17,12,.34);
+    transition:opacity .15s ease, color .15s ease;
   }
-  .tab:active{
-    transform:scale(.92);
-    opacity:.65;
+  .navtab:first-child{border-top:none;}
+  .navtab .idx{
+    font-family:var(--font-brand);
+    font-size:11px;
+    letter-spacing:0;
+    opacity:.72;
   }
-  .tab-icon{
-    width:34px;height:34px;
-    display:flex;align-items:center;justify-content:center;
-    border-radius:999px;
-    border:1px solid transparent;
-    transition:background .15s ease, border-color .15s ease, transform .15s ease;
-  }
-  .tab:active .tab-icon{
-    transform:scale(.9);
-    background:rgba(255,255,255,.16);
-  }
-  .tab-icon svg{width:17px;height:17px;}
-  .tab-label{font-size:10px;letter-spacing:.01em;}
-  .tab.active{color:var(--ink);}
-  .tab.active .tab-icon{
-    background:#fff;
-    border-color:#fff;
-  }
-  .tab.active:active .tab-icon{background:rgba(255,255,255,.82);}
-  .tab.active .tab-icon svg{stroke:#17152a;}
-
-  @keyframes tabSpring{
-    0%{transform:scale(1);}
-    38%{transform:scale(.84);}
-    68%{transform:scale(1.1);}
-    100%{transform:scale(1);}
-  }
-  @keyframes tabPulse{
-    0%{background:rgba(238,142,99,.6);border-color:rgba(238,142,99,.6);}
-    100%{background:rgba(255,255,255,.18);border-color:rgba(255,255,255,.32);}
-  }
-  .tab-icon.tap-fx{
-    animation:tabSpring .46s cubic-bezier(.34,1.56,.64,1), tabPulse .55s ease-out;
-  }
+  .navtab:active{opacity:.6;}
+  .navtab.active{color:#f4e3c1;font-weight:600;}
+  .navtab.active .idx{opacity:1;color:#f4e3c1;}
 
   /* 換頁平滑轉場：View Transitions API（配合 <meta name="view-transition">）。
      不支援的瀏覽器（Firefox／舊版 Safari）會直接跳頁，屬漸進增強，不影響功能。 */
@@ -308,8 +289,7 @@
     *{animation:none !important;transition:none !important;}
     ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none !important;}
     .eyebrow,.page-title,.page-subtitle,.story{opacity:1 !important;transform:none !important;}
-    .tab:active{transform:none;opacity:.55;}
-    .tab:active .tab-icon{transform:none;}
+    .navtab:active{transform:none;opacity:.6;}
   }
 </style>
 </head>
@@ -359,45 +339,18 @@
   </section>
 </main>
 
-<nav class="tabbar">
-  <a class="tab" href="index.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg></span>
-    <span class="tab-label">首頁</span>
-  </a>
-  <a class="tab active" href="about.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r=".6" fill="currentColor" stroke="none"/></svg></span>
-    <span class="tab-label">關於</span>
-  </a>
-  <a class="tab" href="bagel.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/></svg></span>
-    <span class="tab-label">貝果</span>
-  </a>
-  <a class="tab" href="cake.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.8.9.8 1.7 0 2.6-.8-.9-.8-1.7 0-2.6Z"/><path d="M12 5.6v3.6"/><rect x="4.5" y="10.4" width="15" height="9.2" rx="4.5"/><path d="M6.3 15c1-1.1 2-1.1 3 0s2 1.1 3 0 2-1.1 3-1.1 1.6.5 2.4 1.1"/></svg></span>
-    <span class="tab-label">蛋糕</span>
-  </a>
-  <a class="tab" href="salad.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16l-1.5 6a3 3 0 01-3 2.5H8.5a3 3 0 01-3-2.5L4 11z"/><path d="M12 11c-.3-1.8-1.6-2.2-1.6-3.8"/><path d="M12 11c.2-1.3 1.2-1.6 1.7-2.8"/></svg></span>
-    <span class="tab-label">溫沙拉</span>
-  </a>
-  <a class="tab" href="faq.html">
-    <span class="tab-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.85-.8c.4.95.15 1.75-.7 2.45-.8.65-1.15 1.1-1.15 2.15"/><circle cx="12" cy="16.8" r=".6" fill="currentColor" stroke="none"/></svg></span>
-    <span class="tab-label">Q&A</span>
-  </a>
+<nav class="side-nav">
+  <a href="index.html" class="navtab"><span class="idx">01</span><span>首頁</span></a>
+  <a href="about.html" class="navtab active" aria-current="page"><span class="idx">02</span><span>關於</span></a>
+  <a href="bagel.html" class="navtab"><span class="idx">03</span><span>貝果</span></a>
+  <a href="cake.html" class="navtab"><span class="idx">04</span><span>蛋糕</span></a>
+  <a href="salad.html" class="navtab"><span class="idx">05</span><span>溫沙拉</span></a>
+  <a href="faq.html" class="navtab"><span class="idx">06</span><span>Q&amp;A</span></a>
 </nav>
 
 <script>
   // iOS Safari 若無 touch 監聽會延遲甚至跳過 :active，導致點擊回饋變慢
   document.addEventListener('touchstart', function(){}, {passive:true});
-
-  document.querySelectorAll('.tab').forEach(function(tab){
-    tab.addEventListener('click', function(){
-      var icon = tab.querySelector('.tab-icon');
-      icon.classList.remove('tap-fx');
-      void icon.offsetWidth;
-      icon.classList.add('tap-fx');
-    });
-  });
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));
