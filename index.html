@@ -116,6 +116,9 @@
     font-size:clamp(32px,9vw,44px);
     line-height:1.2;
     letter-spacing:.06em;
+    /* 品牌手寫字「歪」左側內建留白比系統字大，實測視覺墨色起點
+       比上下兩行多縮進約 1.5px，用負 margin 拉回同一條左邊線 */
+    margin-left:-1.5px;
     animation:rise .7s .06s ease-out both;
   }
   .desc{
