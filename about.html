@@ -100,12 +100,14 @@
   .page-bg{
     z-index:0;
     background:url("assets/img/home-bg.jpg") center 28% / cover no-repeat;
+    view-transition-name:bg-photo;
   }
   .page-frost{
     z-index:1;
     background:rgba(20,15,15,.55);
     backdrop-filter:blur(var(--frost-blur)) saturate(1.15);
     -webkit-backdrop-filter:blur(var(--frost-blur)) saturate(1.15);
+    view-transition-name:bg-overlay;
   }
 
   header{
@@ -330,7 +332,10 @@
   .navtab.active .idx{opacity:1;color:#f4e3c1;}
 
   /* 換頁平滑轉場：View Transitions API（配合 <meta name="view-transition">）。
-     不支援的瀏覽器（Firefox／舊版 Safari）會直接跳頁，屬漸進增強，不影響功能。 */
+     不支援的瀏覽器（Firefox／舊版 Safari）會直接跳頁，屬漸進增強，不影響功能。
+     .page-bg/.page-frost 另外掛了 view-transition-name（跨頁對應到首頁的
+     .hero-bg/.hero-scrim），讓背景層獨立做 cross-fade，不會被 root 的
+     位移動畫拖著跳，換頁時底圖才不會跟著整頁一起滑動而顯得生硬。 */
   @media (prefers-reduced-motion: no-preference){
     ::view-transition-old(root){animation:vt-out .2s cubic-bezier(.4,0,.2,1) both;}
     ::view-transition-new(root){animation:vt-in .26s cubic-bezier(.4,0,.2,1) both;}
