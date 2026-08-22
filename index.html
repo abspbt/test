@@ -26,6 +26,7 @@
     unicode-range:U+5634,U+6B6A,U+70D8,U+7119,U+96DE;
   }
   :root{
+    --font-brand:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
     --ink:#fff;
     --ink-dim:rgba(255,255,255,.78);
     --ink-soft:rgba(255,255,255,.88);
@@ -88,7 +89,7 @@
     padding:calc(16px + var(--safe-t)) 20px 16px;
   }
   .brand{
-    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+    font-family:var(--font-brand);
     font-size:15px;
     font-weight:300;
     letter-spacing:.02em;
@@ -111,7 +112,7 @@
     animation:rise .7s ease-out both;
   }
   .title{
-    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC","STSong","PMingLiU",serif;
+    font-family:var(--font-brand);
     font-weight:300;
     font-size:clamp(32px,9vw,44px);
     line-height:1.2;
@@ -172,7 +173,7 @@
   }
   .navtab:first-child{border-top:none;}
   .navtab .idx{
-    font-family:"Brand LXGW WenKai TC Light","Songti TC","Noto Serif TC",serif;
+    font-family:var(--font-brand);
     font-size:11px;
     letter-spacing:0;
     opacity:.72;
